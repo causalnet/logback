@@ -23,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import ch.qos.logback.core.net.mock.MockContext;
@@ -35,7 +34,6 @@ import ch.qos.logback.core.util.ExecutorServiceUtil;
  *
  * @author Carl Harris
  */
-@Disabled
 public class ServerSocketAppenderBaseFunctionalTest {
 
     private static final String TEST_EVENT = "test event";

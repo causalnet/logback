@@ -62,13 +62,21 @@ public abstract class AbstractServerSocketAppender<E> extends AppenderBase<E> {
                     getInetAddress());
             ServerListener<RemoteReceiverClient> listener = createServerListener(socket);
 
-            runner = createServerRunner(listener, getContext().getScheduledExecutorService());
+            runner = createServerRunner(listener, getServerExecutor());
             runner.setContext(getContext());
-            getContext().getScheduledExecutorService().execute(runner);
+            getConnectionExecutor().execute(runner);
             super.start();
         } catch (Exception ex) {
             addError("server startup error: " + ex, ex);
         }
+    }
+
+    protected Executor getServerExecutor() {
+        return getContext().getScheduledExecutorService();
+    }
+
+    protected Executor getConnectionExecutor() {
+        return getContext().getScheduledExecutorService();
     }
 
     protected ServerListener<RemoteReceiverClient> createServerListener(ServerSocket socket) {
